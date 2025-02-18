@@ -24,7 +24,6 @@ app.get('/produtos', (requisicao, resposta) => {
     resposta.status(500).json({ mensagem: "erro ao buscar produtos", erro: erro.message })
 
   }
-  resposta.json(bancoDados);
 });
 
 app.post('/produtos', (requisicao, resposta) => {
@@ -68,16 +67,16 @@ app.put("/produto/:id", (requisicao, resposta) => {
 app.delete("/produtos/:id", (requisicao, resposta) => {
  try {
   const id = requisicao.params.id
-  const produto = bancoDados.findIndex(elemento => elemento.id === id)
-  if(produto === -1){
+  const index = bancoDados.findIndex(elemento => elemento.id === id)
+  if(index === -1){
     return resposta.status(404).json({mensagem:"produto nao encontrado"})
   }
   bancoDados.splice(index, 1)
   resposta.status(200).json({mensagem:"produto deletado com sucesso"})
  } catch (error) {
   resposta.status(500).json({
-    mensagem: "erro ao cadastrar produtos",
-    erro: error.message,})
+    mensagem: "erro ao deletar produtos",
+    erro: error.message})
   
  }
 })
@@ -99,6 +98,14 @@ app.get("/produtos/:id", (requisicao, resposta) => {
   }
 })
 
+app.delete("/produtos", (requisicao, resposta) => {
+try {
+  bancoDados.length = 0;
+  resposta.status(200).json({mensagem:"todos os produtos deletados com sucesso"})
+} catch (error) {
+  
+}
+})
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
