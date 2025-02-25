@@ -126,7 +126,10 @@ try {
   await pool.query(consulta)
   resposta.status(200).json({mensagem:"todos os produtos deletados com sucesso"})
 } catch (error) {
-  
+  resposta.status(500).json({
+    mensagem: "erro ao deletar todos produtos",
+    erro: error.message
+})
 }
 })
 app.listen(port, () => {
