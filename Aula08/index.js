@@ -1,7 +1,7 @@
 // Importando com (ESM)
 const express = require('express');
 const dotenv = require('dotenv');
-const equipamentoRoutes = require('./src/modules/equipamento/routes/index')
+const equipamentoRoutes = require('./src/modules/emprestimoEquipamento/routes/equipamentoEmprestimoRoutes')
 
 dotenv.config();
 
