@@ -3,11 +3,11 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 const sequelize = new Sequelize(
-    process.env.DB_NOME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,{
-    host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT
+    process.env.DEV_DB_NOME,
+    process.env.DEV_DB_USER,
+    process.env.DEV_DB_PASSWORD,{
+    host: process.env.DEV_DB_HOST,
+    dialect: process.env.DEV_DB_DIALECT
 });
 
 module.exports = sequelize;
