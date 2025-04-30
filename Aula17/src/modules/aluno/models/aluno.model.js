@@ -26,7 +26,7 @@ const AlunoModel = sequelize.define('AlunoModel',{
         unique: true,
         allowNull: false, // Caso erro, é aqui
         validate:{
-            isEmail:{
+            is:{
                 args:/^[a-zA-Z0-9._%+-]+@edum\.rn\.senac\.br$/                ,
                 msg:'E-mail invalido! O e-mail deve pertencer ao dominio @rn.senac.br'
             }
@@ -50,8 +50,8 @@ const AlunoModel = sequelize.define('AlunoModel',{
         type: DataTypes.CHAR(9),
         allowNull: false,
         references:{
-          model: turma,
-          key: turma_cod
+          model: 'turma',
+          key: 'turma_cod'
         }
       }
     },
